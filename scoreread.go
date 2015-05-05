@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"sort"
 )
 
 func main() {
@@ -43,6 +44,10 @@ func main() {
 
 	// Yield average score.
 	values := []float64{ariScore, cliScore, fkScore, gfiScore, smogScore}
+	sort.Float64s(values)
 	avg := calc.Mean(values)
+	stddev := calc.StdDev(values)
+	fmt.Printf("Sorted scores: [%0.2f, %0.2f, %0.2f, %0.2f, %0.2f]\n", values[0], values[1], values[2], values[3], values[4])
 	fmt.Printf("Average score: %0.2f\n", avg)
+	fmt.Printf("Std Dev of scores: %0.2f\n", stddev)
 }
