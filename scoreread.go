@@ -11,6 +11,7 @@ import (
 func main() {
 	file := flag.String("file", "", "Name of file to filter")
 	useAri := flag.Bool("ari", false, "Use Automated Readbility Index (ARI)")
+	useCli := flag.Bool("cli", false, "Use Coleman-Liau Index (CLI)")
 	useFk := flag.Bool("fk", false, "Use Flesch-Kincaid Grade Level")
 	flag.Parse()
 
@@ -18,9 +19,10 @@ func main() {
 	if *file == "" {
 		log.Fatal("Missing -file argument")
 	}
-	if !*useAri || !*useFk {
+	if !*useAri && !*useCli && !*useFk {
 		// Assume all tests are requested if no tests are requested.
 		*useAri = true
+		*useCli = true
 		*useFk = true
 	}
 
@@ -33,9 +35,14 @@ func main() {
 	// Score ARI, if requested.
 	if *useAri {
 		ariScore := read.Ari(text)
-		fmt.Printf("ARI: %0.2f\n", ariScore)
+		fmt.Printf("Automated Readability: %0.2f\n", ariScore)
 	}
 
+	// Score CLI, if requested.
+	if *useCli {
+		cliScore := read.Cli(text)
+		fmt.Printf("Coleman-Liau: %0.2f\n", cliScore)
+	}
 	// Score Flesch-Kincaid, if requested.
 	if *useFk {
 		fkScore := read.Fk(text)
