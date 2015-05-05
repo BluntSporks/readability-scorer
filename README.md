@@ -1,4 +1,4 @@
-# readability-tests
+# readability-scorer
 Golang program to score readability using the readability package
 
 # Status
