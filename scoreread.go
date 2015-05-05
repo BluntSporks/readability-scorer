@@ -1,24 +1,21 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"github.com/BluntSporks/calculation"
 	"github.com/BluntSporks/readability"
 	"io/ioutil"
 	"log"
+	"os"
 )
 
 func main() {
-	file := flag.String("file", "", "Name of file to filter")
-	flag.Parse()
-
 	// Check arguments.
-	if *file == "" {
-		log.Fatal("Missing -file argument")
+	if len(os.Args) == 1 {
+		log.Fatal("Missing filename argument")
 	}
 
-	bytes, err := ioutil.ReadFile(*file)
+	bytes, err := ioutil.ReadFile(os.Args[1])
 	if err != nil {
 		log.Fatal(err)
 	}
