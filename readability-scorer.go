@@ -1,3 +1,4 @@
+// readability-scorer scores the readability of text according to various formulas.
 package main
 
 import (
