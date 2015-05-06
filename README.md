@@ -20,4 +20,7 @@ The install this program and its dependencies by running:
     go get github.com/BluntSporks/readability-scorer
 
 ## Usage
-readability-scorer [filename]
+    readability-scorer [filename]
+
+Arguments:
+* filename: Name of file to check for readability.
