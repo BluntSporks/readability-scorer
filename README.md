@@ -17,7 +17,7 @@ This program is written in Google Go language. Make sure that Go is installed an
 
 The install this program and its dependencies by running:
 
-    go install github.com/BluntSporks/readability-scorer
+    go get github.com/BluntSporks/readability-scorer
 
 ## Usage
 readability-scorer [filename]
